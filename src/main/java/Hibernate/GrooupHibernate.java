@@ -20,7 +20,7 @@ public class GrooupHibernate {
             }
         }
 
-        public Grooup getById(Long id) {
+        public Grooup getById(int id) {
             try (Session session = sessionFactory.openSession()) {
                 return session.get(Grooup.class, id);
             }

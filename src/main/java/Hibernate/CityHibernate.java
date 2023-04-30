@@ -20,7 +20,7 @@ public class CityHibernate {
             }
         }
 
-        public City getById(Long id) {
+        public City getById(int id) {
             try (Session session = sessionFactory.openSession()) {
                 return session.get(City.class, id);
             }

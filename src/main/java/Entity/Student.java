@@ -16,10 +16,11 @@ public class Student {
     @Column
     private int age;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "grooupTitle", referencedColumnName = "title")
+    @JoinColumn(name = "grooupId")
     private Grooup grooup;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cityName", referencedColumnName = "name")
+    @JoinColumn(name = "cityId")
     private City city;
 
     public int getId() {

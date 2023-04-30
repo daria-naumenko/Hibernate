@@ -2,23 +2,41 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <title>Student Information</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+<body style="background-color: beige;"></body>
 </head>
 <body>
 <h1>Write information about student</h1>
 
 <form action="${pageContext.request.contextPath}/student" method="post">
-    <label for="firstName">first Name:</label>
-    <input type="text" id="firstName" name="firstName" placeholder="Enter first Name"><br>
-    <label for="lastName">last Name:</label>
-    <input type="text" id="lastName" name="lastName" placeholder="Enter last Name"><br>
-    <label for="age">Age:</label>
-    <input type="number" id="age" name="age" placeholder="Enter age"><br>
-    <label for="grooupTitle">Group:</label>
-    <input type="text" id="grooupTitle" name="grooupTitle" placeholder="Enter group title"><br>
-    <label for="cityName">City:</label>
-    <input type="text" id="cityName" name="cityName" placeholder="Enter city"><br>
-    <input type="submit" value="Send information">
+    <c:if test="${empty selectedStudent}">
+        <label for="firstName">first Name:</label>
+        <input type="text" id="firstName" name="firstName" placeholder="Enter first Name"><br>
+        <label for="lastName">last Name:</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Enter last Name"><br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" placeholder="Enter age"><br>
+        <label for="grooupTitle">Group:</label>
+        <input type="text" id="grooupTitle" name="grooupTitle" placeholder="Enter group title"><br>
+        <label for="cityName">City:</label>
+        <input type="text" id="cityName" name="cityName" placeholder="Enter city"><br>
+        <input type="submit" value="Send information">
+    </c:if>
+    <c:if test="${not empty selectedStudent}">
+        <input type="hidden" id="id" name="id" value="${selectedStudent.id}">
+        <label for="firstName">first Name:</label>
+        <input type="text" id="firstName" name="firstName" placeholder="Enter first Name" value="${selectedStudent.name}"><br>
+        <label for="lastName">last Name:</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Enter last Name" value="${selectedStudent.lastname}"><br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" placeholder="Enter age" value="${selectedStudent.age}"><br>
+        <label for="grooupTitle">Group:</label>
+        <input type="text" id="grooupTitle" name="grooupTitle" placeholder="Enter group title" value="${selectedStudent.grooup.title}"><br>
+        <label for="cityName">City:</label>
+        <input type="text" id="cityName" name="cityName" placeholder="Enter city" value="${selectedStudent.city.name}"><br>
+        <input type="submit" value="Save changes">
+    </c:if>
 </form>
 
 <h2>List of students</h2>
@@ -59,4 +77,4 @@
     </c:forEach>
 </table>
 </body>
-</html>
+</html>       
